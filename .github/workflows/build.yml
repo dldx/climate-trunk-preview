@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        working-directory: climate-trunk
 
       - name: Build project
         run: bun run build
+        working-directory: climate-trunk
