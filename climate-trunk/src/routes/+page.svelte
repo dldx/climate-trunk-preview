@@ -7,7 +7,7 @@
 
   // Svelte 5 Runes for state management
   let hoveredData = $state<any>(null);
-  let showAnimations = $state(true);
+  let showAnimations = false;
   let showEmbed = $state(false);
   let copied = $state(false);
 
@@ -26,9 +26,7 @@ ${widgetCode}
 
   // Dynamically prefix SVG hover rules so they only activate when showAnimations is true
   let Trunk = $derived(
-    showAnimations
-      ? TrunkAsset
-      : TrunkAsset.replace(/svg:has\(/g, ".animations-disabled svg:has("),
+    TrunkAsset.replace(/svg:has\(/g, ".animations-disabled svg:has("),
   );
 
   /**
@@ -72,14 +70,6 @@ ${widgetCode}
 <main>
   <!-- Settings Panel -->
   <div class="settings-panel">
-    <div class="setting-item">
-      <span>Animations</span>
-      <label class="switch">
-        <input type="checkbox" bind:checked={showAnimations} />
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="divider-v"></div>
     <button class="embed-trigger" onclick={() => (showEmbed = !showEmbed)}>
       {showEmbed ? "Hide Embed" : "Get Embed Code"}
     </button>
@@ -178,12 +168,6 @@ ${widgetCode}
     gap: 15px;
   }
 
-  .divider-v {
-    width: 1px;
-    height: 20px;
-    background: rgba(0, 0, 0, 0.1);
-  }
-
   .embed-trigger {
     background: none;
     border: none;
@@ -278,63 +262,6 @@ ${widgetCode}
   .container.shifted {
     transform: translateX(100px);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .setting-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-
-  /* Switch Toggle */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 20px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ddd;
-    transition: 0.4s;
-    border-radius: 20px;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-
-  input:checked + .slider {
-    background-color: var(--color-primary);
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(14px);
   }
 
   .container {

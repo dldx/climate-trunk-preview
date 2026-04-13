@@ -8,7 +8,7 @@
   // Svelte 5 Runes for state management
   let rawTrunkAsset = $state("");
   let hoveredData = $state<any>(null);
-  let showAnimations = $state(true);
+  let showAnimations = false;
   let error = $state("");
   let loading = $state(true);
 
@@ -33,16 +33,14 @@
 
   // Dynamically prefix SVG hover rules so they only activate when showAnimations is true
   let Trunk = $derived(
-    showAnimations
-      ? rawTrunkAsset
-      : rawTrunkAsset
-          .replace(/svg:has\(/g, ".disabled-styles svg:has(")
-          .replace(
-            /\[id\$="-ring"\]:hover/g,
-            ".disabled-styles [id$='-ring']:hover",
-          )
-          .replace(/\[id\$="-icon"\]/g, ".disabled-styles [id$='-icon']")
-          .replace(/\[id\$="-text"\]/g, ".disabled-styles [id$='-text']"),
+    rawTrunkAsset
+      .replace(/svg:has\(/g, ".disabled-styles svg:has(")
+      .replace(
+        /\[id\$="-ring"\]:hover/g,
+        ".disabled-styles [id$='-ring']:hover",
+      )
+      .replace(/\[id\$="-icon"\]/g, ".disabled-styles [id$='-icon']")
+      .replace(/\[id\$="-text"\]/g, ".disabled-styles [id$='-text']"),
   );
 
   /**
@@ -79,17 +77,6 @@
 </script>
 
 <div class="climate-trunk-widget">
-  <!-- Settings Panel -->
-  <div class="settings-panel">
-    <div class="setting-item">
-      <span>Animations</span>
-      <label class="switch">
-        <input type="checkbox" bind:checked={showAnimations} />
-        <span class="slider"></span>
-      </label>
-    </div>
-  </div>
-
   <div class="container">
     {#if loading}
       <p>Loading...</p>
@@ -134,76 +121,6 @@
     flex-direction: column;
     position: relative;
     font-family: "FranzSans", sans-serif;
-  }
-
-  /* Settings Panel */
-  .settings-panel {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    padding: 10px 16px;
-    border-radius: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  }
-
-  .setting-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* Switch Toggle */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 18px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ddd;
-    transition: 0.4s;
-    border-radius: 20px;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 12px;
-    width: 12px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-
-  input:checked + .slider {
-    background-color: var(--color-primary);
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(12px);
   }
 
   .container {
