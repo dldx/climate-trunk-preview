@@ -151,7 +151,7 @@
 
   .svg-wrapper {
     height: 90vh;
-    max-height: 900px;
+    max-height: 1000px;
     display: flex;
     align-items: center;
     justify-content: center;
