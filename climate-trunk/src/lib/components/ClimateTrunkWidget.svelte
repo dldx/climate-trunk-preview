@@ -3,7 +3,10 @@
   import { fade } from "svelte/transition";
   import { ringInfo } from "../data/ringInfo";
 
-  let { trunkUrl = "" } = $props();
+  let {
+    trunkUrl = "",
+    visuals = {},
+  }: { trunkUrl: string; visuals: Record<string, string> } = $props();
 
   // Svelte 5 Runes for state management
   let rawTrunkAsset = $state("");
@@ -59,7 +62,10 @@
         .replace("-text", "");
 
       if (ringInfo[id]) {
-        hoveredData = ringInfo[id];
+        hoveredData = {
+          ...ringInfo[id],
+          visuals: visuals[id] || ringInfo[id].visuals,
+        };
       }
     }
   };
@@ -100,7 +106,11 @@
           <h2 style="color: #fff;">{hoveredData.title}</h2>
           <div class="divider"></div>
           <p class="description">{hoveredData.description}</p>
-          <div class="visuals">VISUALS: {hoveredData.visuals}</div>
+          <div class="visuals">
+            VISUALS: {hoveredData.visuals == "0"
+              ? "COMING SOON"
+              : String(hoveredData.visuals).padStart(2, "0")}
+          </div>
         </div>
       </div>
     {/if}
@@ -115,12 +125,12 @@
     --glass-bg: rgba(255, 255, 255, 0.7);
 
     width: 100%;
-    min-height: 600px;
+    /* min-height: 600px; */
     height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
-    font-family: "FranzSans", sans-serif;
+    font-family: "Franzsans", sans-serif;
   }
 
   .container {
@@ -130,13 +140,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     box-sizing: border-box;
   }
 
   .svg-wrapper {
-    height: 80vh;
-    max-height: 800px;
+    height: 90vh;
+    max-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,7 +165,7 @@
     bottom: 0;
     width: 320px;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 1001;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 

@@ -17,6 +17,24 @@ function initWidget() {
   // Get the SVG URL from data attribute
   const svgUrl = target.getAttribute("data-svg-url") || "";
 
+  // Collect ring visuals from data attributes (e.g., data-science="10")
+  const visuals: Record<string, string> = {};
+  const ringIds = [
+    "science",
+    "impacts",
+    "economics",
+    "political-economy",
+    "governance",
+    "solutions",
+    "energy",
+    "you",
+  ];
+
+  ringIds.forEach((id) => {
+    const val = target.getAttribute(`data-${id}`);
+    if (val) visuals[id] = val;
+  });
+
   // Clear any existing content
   target.innerHTML = "";
 
@@ -24,6 +42,7 @@ function initWidget() {
     target: target,
     props: {
       trunkUrl: svgUrl,
+      visuals: visuals,
     },
   });
 }

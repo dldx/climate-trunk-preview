@@ -11,8 +11,23 @@
   let showEmbed = $state(false);
   let copied = $state(false);
 
+  // Test values to show that overrides work in the preview
+  const testVisuals: Record<string, string> = {
+    science: "24",
+    solutions: "12",
+  };
+
   const embedSnippet = `<div id="climate-trunk-app"
-    data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_5bab2fd1ecb86538f411149cda37ec2a_Climate_Trunk_Interactive.svg">
+    data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_5bab2fd1ecb86538f411149cda37ec2a_Climate_Trunk_Interactive.svg"
+    data-science="4"
+    data-impacts="0"
+    data-economics="0"
+    data-political-economy="0"
+    data-governance="0"
+    data-solutions="0"
+    data-energy="0"
+    data-you="0"
+>
 </div>
 <script type="text/javascript">
 ${widgetCode}
@@ -46,7 +61,10 @@ ${widgetCode}
         .replace("-text", "");
 
       if (ringInfo[id]) {
-        hoveredData = ringInfo[id];
+        hoveredData = {
+          ...ringInfo[id],
+          visuals: testVisuals[id] || ringInfo[id].visuals,
+        };
       }
     }
   };
