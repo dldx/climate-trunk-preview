@@ -12,7 +12,7 @@
   let copied = $state(false);
 
   const embedSnippet = `<div id="climate-trunk-app"
-    data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_Landing_page_Feb_2026_v2.svg">
+    data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_5bab2fd1ecb86538f411149cda37ec2a_Climate_Trunk_Interactive.svg">
 </div>
 <script type="text/javascript">
 ${widgetCode}
