@@ -6,7 +6,12 @@
   let {
     trunkUrl = "",
     visuals = {},
-  }: { trunkUrl: string; visuals: Record<string, string> } = $props();
+    descriptions = {},
+  }: {
+    trunkUrl: string;
+    visuals: Record<string, string>;
+    descriptions: Record<string, string>;
+  } = $props();
 
   // Svelte 5 Runes for state management
   let rawTrunkAsset = $state("");
@@ -65,6 +70,7 @@
         hoveredData = {
           ...ringInfo[id],
           visuals: visuals[id] || ringInfo[id].visuals,
+          description: descriptions[id] || ringInfo[id].description,
         };
       }
     }

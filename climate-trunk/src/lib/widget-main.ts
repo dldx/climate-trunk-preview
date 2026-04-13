@@ -18,7 +18,9 @@ function initWidget() {
   const svgUrl = target.getAttribute("data-svg-url") || "";
 
   // Collect ring visuals from data attributes (e.g., data-science="10")
+  // and descriptions from data attributes (e.g., data-science-description="...")
   const visuals: Record<string, string> = {};
+  const descriptions: Record<string, string> = {};
   const ringIds = [
     "science",
     "impacts",
@@ -33,6 +35,8 @@ function initWidget() {
   ringIds.forEach((id) => {
     const val = target.getAttribute(`data-${id}`);
     if (val) visuals[id] = val;
+    const description = target.getAttribute(`data-${id}-description`);
+    if (description) descriptions[id] = description;
   });
 
   // Clear any existing content
@@ -43,6 +47,7 @@ function initWidget() {
     props: {
       trunkUrl: svgUrl,
       visuals: visuals,
+      descriptions: descriptions,
     },
   });
 }
