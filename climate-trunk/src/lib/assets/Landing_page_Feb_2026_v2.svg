@@ -62,10 +62,11 @@
          rotate(157deg); } svg:has(#governance-ring:hover) #governance-icon .inner { transform:
          rotate(-157deg); } svg:has(#solutions-ring:hover) #solutions-icon { transform:
          rotate(163deg); } svg:has(#solutions-ring:hover) #solutions-icon .inner { transform:
-         rotate(-163deg); } svg:has(#energy-ring:hover) #energy-icon { transform: rotate(168deg); }
-         svg:has(#energy-ring:hover) #energy-icon .inner { transform: rotate(-168deg); }
-         svg:has(#you-ring:hover) #you-icon { transform: rotate(171deg); } svg:has(#you-ring:hover)
-         #you-icon .inner { transform: rotate(-171deg); } </style>
+         rotate(-163deg) scaleY(-1); } svg:has(#energy-ring:hover) #energy-icon { transform:
+         rotate(168deg); } svg:has(#energy-ring:hover) #energy-icon .inner { transform:
+         rotate(-168deg); } svg:has(#you-ring:hover) #you-icon { transform: rotate(171deg); }
+         svg:has(#you-ring:hover) #you-icon .inner { transform: rotate(-171deg); } #solutions-icon
+         .inner { transform: scaleY(-1); }</style>
       <radialGradient
          id="radial-gradient"
          cx="583.8"
