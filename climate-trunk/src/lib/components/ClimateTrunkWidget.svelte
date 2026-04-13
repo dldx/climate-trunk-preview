@@ -137,6 +137,7 @@
     flex-direction: column;
     position: relative;
     font-family: "Franzsans", sans-serif;
+    align-items: center;
   }
 
   .container {
@@ -150,16 +151,21 @@
   }
 
   .svg-wrapper {
-    height: 90vh;
-    max-height: 1000px;
+    width: 100%;
+    max-width: 1000px;
+    /* Avoid height: 90vh here — WebKit collapses percentage-height chains
+       when the mount target (#climate-trunk-app) has no explicit height.
+       Instead, drive sizing from width so the SVG aspect-ratio resolves. */
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .svg-wrapper :global(svg) {
-    height: 100%;
-    width: auto;
+    /* Width-driven: WebKit always resolves from a concrete width value. */
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
     display: block;
     filter: drop-shadow(0 10px 30px rgba(62, 29, 20, 0.1));
   }
@@ -192,6 +198,7 @@
     top: 20px;
     width: 320px;
     background-color: rgba(55, 29, 19, 0.85);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     color: #ffffff;
     padding: 25px;
@@ -251,9 +258,6 @@
     .tooltip {
       display: none !important;
     }
-    .svg-wrapper {
-      height: auto;
-      width: 100%;
-    }
+    /* svg-wrapper is already width-driven, no override needed */
   }
 </style>
