@@ -153,7 +153,11 @@ ${widgetCode}
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(circle at center, #ffffff 0%, var(--color-bg) 100%);
+    background: radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      var(--color-bg) 100%
+    );
     position: relative;
   }
 
@@ -376,6 +380,7 @@ ${widgetCode}
 
   .description {
     color: var(--color-text-dim);
+    text-align: left;
   }
 
   .tooltip h2 {
@@ -386,6 +391,7 @@ ${widgetCode}
     letter-spacing: 0.1em;
     line-height: 1.1;
     color: #fff;
+    text-align: left;
   }
 
   .divider {
@@ -402,6 +408,7 @@ ${widgetCode}
     color: rgba(255, 255, 255, 0.85);
     font-weight: 300;
     margin-bottom: 25px;
+    text-align: left;
   }
 
   .visuals {
@@ -410,6 +417,7 @@ ${widgetCode}
     letter-spacing: 0.2em;
     color: #ffffff;
     opacity: 0.9;
+    text-align: left;
   }
 
   .svg-wrapper :global([id$="-ring"]) {
