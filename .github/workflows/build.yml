@@ -37,6 +37,14 @@ jobs:
         run: bun install --frozen-lockfile
         working-directory: climate-trunk
 
+      - name: Build widget
+        run: APP_MODE=widget bun run build
+        working-directory: climate-trunk
+
+      - name: Inject widget code
+        run: bun scripts/inject-widget.ts
+        working-directory: climate-trunk
+
       - name: Build project
         run: bun run build
         working-directory: climate-trunk

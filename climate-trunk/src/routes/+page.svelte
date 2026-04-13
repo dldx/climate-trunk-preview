@@ -3,9 +3,26 @@
   import TrunkAsset from "$lib/assets/Landing_page_Feb_2026_v2.svg?raw";
   import { ringInfo } from "$lib/data/ringInfo";
 
+  import { widgetCode } from "$lib/data/widgetCode";
+
   // Svelte 5 Runes for state management
   let hoveredData = $state<any>(null);
   let showAnimations = $state(true);
+  let showEmbed = $state(false);
+  let copied = $state(false);
+
+  const embedSnippet = `<div id="climate-trunk-app"
+    data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_Landing_page_Feb_2026_v2.svg">
+</div>
+<script type="text/javascript">
+${widgetCode}
+<\/script>`;
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(embedSnippet);
+    copied = true;
+    setTimeout(() => (copied = false), 2000);
+  };
 
   // Dynamically prefix SVG hover rules so they only activate when showAnimations is true
   let Trunk = $derived(
@@ -62,9 +79,31 @@
         <span class="slider"></span>
       </label>
     </div>
+    <div class="divider-v"></div>
+    <button class="embed-trigger" onclick={() => (showEmbed = !showEmbed)}>
+      {showEmbed ? "Hide Embed" : "Get Embed Code"}
+    </button>
   </div>
 
-  <div class="container">
+  {#if showEmbed}
+    <div class="embed-modal" transition:fade={{ duration: 200 }}>
+      <div class="embed-header">
+        <h3>Webflow Embed Code</h3>
+        <button class="copy-btn" class:copied onclick={copyToClipboard}>
+          {copied ? "Copied!" : "Copy Code"}
+        </button>
+      </div>
+      <div class="code-container">
+        <pre><code>{embedSnippet}</code></pre>
+      </div>
+      <p class="embed-hint">
+        Copy this snippet into a Webflow Embed element to display the Climate
+        Trunk on your site.
+      </p>
+    </div>
+  {/if}
+
+  <div class="container" class:shifted={showEmbed}>
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <!-- svelte-ignore a11y_mouse_events_have_key_events -->
     <div
@@ -130,6 +169,111 @@
     border-radius: 30px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .divider-v {
+    width: 1px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .embed-trigger {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    color: var(--color-primary);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    padding: 0;
+  }
+
+  .embed-trigger:hover {
+    opacity: 1;
+  }
+
+  .embed-modal {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+    width: 450px;
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1500;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .embed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .embed-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .copy-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 29, 19, 0.2);
+  }
+
+  .copy-btn.copied {
+    background: #4caf50;
+  }
+
+  .code-container {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+    max-height: 300px;
+  }
+
+  .code-container pre {
+    margin: 0;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .embed-hint {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .container.shifted {
+    transform: translateX(100px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .setting-item {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Trunk Widget Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 50px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .canvas {
+            width: 1000px;
+            height: 800px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canvas">
+        <!-- THE WEBFLOW DIV -->
+        <div id="climate-trunk-app"
+            data-svg-url="https://cdn.prod.website-files.com/68bc380844edbd27a9e54838/69dc3435a97815662fa276b3_Landing_page_Feb_2026_v2.svg">
+        </div>
+    </div>
+
+    <!-- THE WIDGET SCRIPT -->
+    <script src="dist-widget/climate-trunk-widget.iife.js"></script>
+</body>
+
+</html>
