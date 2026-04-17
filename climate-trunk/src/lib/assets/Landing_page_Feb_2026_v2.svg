@@ -32,6 +32,7 @@
          svg:has(#science-ring:hover) #science-icon { transform: rotate(150deg); }
       svg:has(#science-ring:hover) #science-icon .inner { transform: rotate(-150deg); } -->
 
+
          svg:has(#impacts-ring:hover) #impacts-icon { transform: rotate(130deg); }
          svg:has(#impacts-ring:hover) #impacts-icon .inner { transform: rotate(-130deg); }
          svg:has(#economics-ring:hover) #economics-icon { transform: rotate(143deg); }
@@ -769,7 +770,7 @@
     </a>
   </g>
   <a
-     href="https://www.climatetrunk.com/rings/you"
+     href="https://www.climatetrunk.com/rings/us"
      id="a224"
      transform="matrix(1,0,0,1.0094247,-55.148783,-37.922444)"
      style="opacity:0.8;stroke-width:0.995321">
@@ -1478,6 +1479,6 @@
          text-align="center"
          text-anchor="middle"
          id="you-text"
-         style="stroke-width:0.975209">YOU</tspan></text>
+         style="stroke-width:0.975209">US</tspan></text>
   </g>
 </svg>
