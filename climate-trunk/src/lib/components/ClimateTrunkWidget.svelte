@@ -152,7 +152,7 @@
 
   .svg-wrapper {
     width: 100%;
-    max-width: 1000px;
+    max-width: 850px;
     /* Avoid height: 90vh here — WebKit collapses percentage-height chains
        when the mount target (#climate-trunk-app) has no explicit height.
        Instead, drive sizing from width so the SVG aspect-ratio resolves. */
