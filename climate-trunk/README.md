@@ -1,42 +1,74 @@
-# sv
+# Climate Trunk Widget
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+An embeddable Svelte widget for displaying the Climate Trunk visualization. Built with SvelteKit and Vite, it supports two build modes: a full SvelteKit app and a standalone IIFE widget bundle for embedding in any webpage.
 
-## Creating a project
+## Setup
 
-If you're seeing this, you've probably already done this step. Congrats!
+Install dependencies:
 
 ```sh
-# create a new project
-npx sv create my-app
+bun install
 ```
 
-To recreate this project with the same configuration:
+## Development
+
+Start the SvelteKit dev server:
 
 ```sh
-# recreate this project
-bun x sv create --template minimal --types ts --install bun climate-trunk
-```
+bun run dev
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# or open in browser automatically
+bun run dev -- --open
 ```
 
 ## Building
 
-To create a production version of your app:
+### Widget (embeddable IIFE bundle)
+
+Builds to `dist-widget/climate-trunk-widget.iife.js`:
 
 ```sh
-npm run build
+APP_MODE=widget bun x vite build
 ```
 
-You can preview the production build with `npm run preview`.
+### SvelteKit app
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+bun run build
+```
+
+Preview the production build:
+
+```sh
+bun run preview
+```
+
+## Embedding the Widget
+
+Include the built script and add a target `div` with the required `data-*` attributes:
+
+```html
+<div id="climate-trunk-app"
+    data-svg-url="https://..."
+    data-science="4"
+    data-impacts="0"
+    data-economics="0"
+    data-political-economy="0"
+    data-governance="0"
+    data-solutions="0"
+    data-energy="0"
+    data-us="0"
+    data-science-description="..."
+    data-impacts-description="..."
+    data-economics-description="..."
+    data-political-economy-description="..."
+    data-governance-description="..."
+    data-solutions-description="..."
+    data-energy-description="..."
+    data-us-description="...">
+</div>
+
+<script src="dist-widget/climate-trunk-widget.iife.js"></script>
+```
+
+See [test-widget.html](test-widget.html) for a full working example.

@@ -29,7 +29,7 @@ function initWidget() {
     "governance",
     "solutions",
     "energy",
-    "you",
+    "us",
   ];
 
   ringIds.forEach((id) => {
