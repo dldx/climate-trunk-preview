@@ -20,7 +20,7 @@
   const embedSnippet = `<div id="climate-trunk-app"
             data-svg-url="https://cdn.prod.website-files.com/698af11ef91de40fb23e1da9/69dd1149710bc47f59416986_Landing_page_Feb_2026_v2.svg"
             data-science="4" data-impacts="0" data-economics="0" data-political-economy="0" data-governance="0"
-            data-solutions="0" data-energy="0" data-you="0"
+            data-solutions="0" data-energy="0" data-us="0"
             data-science-description="What we know about the climate system, how we know it and where uncertainties remain."
             data-impacts-description="How climate change is affecting people, ecosystems and the natural world."
             data-economics-description="The incentives, costs, markets and capital flows that shape the pace of the transition."
@@ -28,7 +28,7 @@
             data-governance-description="The rules, institutions, diplomacy and accountability mechanisms that seek to coordinate action."
             data-solutions-description="The macro and micro of how the net zero transition happens – from emission reductions and carbon removals to deploying clean technologies and adapting to climate impacts."
             data-energy-description="The system at the heart of the transition, from fossil fuels and renewables to industry, electrification and transport."
-            data-you-description="How your choices, voice and sphere of influence can accelerate progress.">
+            data-us-description="How your choices, voice and sphere of influence can accelerate progress.">
         </div>
 <script type="text/javascript">
 ${widgetCode}

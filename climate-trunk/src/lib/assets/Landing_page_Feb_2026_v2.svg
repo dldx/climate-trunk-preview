@@ -22,13 +22,13 @@
          transform-box: fill-box; } [id$=&quot;-ring&quot;] { transition: filter .3s; cursor:
          pointer; } [id$=&quot;-ring&quot;]:hover { filter: brightness(1.1); }
          [id$=&quot;-text&quot;] { transition: transform 0.3s, font-weight 0.3s; transform-origin:
-         center; } svg:has(#impacts-ring:hover) #impacts-text { font-weight: 900; }
+         center; pointer-events: none; } svg:has(#impacts-ring:hover) #impacts-text { font-weight:
+         900; }
          svg:has(#political-economy-ring:hover) #political-economy-text { font-weight: 900; }
          svg:has(#solutions-ring:hover) #solutions-text { font-weight: 900; }
          svg:has(#economics-ring:hover) #economics-text { font-weight: 900; }
          svg:has(#science-ring:hover) #science-text { font-weight: 900; } svg:has(#us-ring:hover)
-         #us-text { font-weight: 900; } svg:has(#governance-ring:hover) #governance-text {
-         font-weight: 900; } svg:has(#energy-ring:hover) #energy-text { font-weight: 900; } <!--
+         #us-text { font-weight: 900; } svg:has(#governance-ring:hover) #governance-text { <!--
          svg:has(#science-ring:hover) #science-icon { transform: rotate(150deg); }
       svg:has(#science-ring:hover) #science-icon .inner { transform: rotate(-150deg); } -->
 
@@ -1331,14 +1331,14 @@
       </g>
     </g>
   </g>
-  <g
-     font-family="'Futura Md Bt'"
-     font-size="18.667px"
-     letter-spacing="1.05px"
-     word-spacing="0px"
-     id="g446"
-     transform="matrix(1,0,0,1.0094247,-55.148783,-37.922444)"
-     style="stroke-width:0.995321">
+   <g
+      font-family="Franzsans"
+      font-size="18.667px"
+      letter-spacing="1.05px"
+      word-spacing="0px"
+      id="g446"
+      transform="matrix(1,0,0,1.0094247,-55.148783,-37.922444)"
+      style="stroke-width:0.995321">
     <g
        id="g441"
        style="stroke-width:0.995321">

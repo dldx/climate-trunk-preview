@@ -40,8 +40,8 @@ export const ringInfo: Record<string, RingData> = {
     description: "The system at the heart of the transition – how clean energy and electrification can transform how we power, move and build.",
     visuals: "07",
   },
-  you: {
-    title: "You",
+  us: {
+    title: "Us",
     description: "How your choices, voice and influence can accelerate progress.",
     visuals: "08",
   },
